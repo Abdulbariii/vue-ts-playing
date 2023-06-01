@@ -4,6 +4,7 @@
     <router-link to="/about">About</router-link>
     <router-link to="/contact">Contact</router-link>
     <router-link to="/counter">Counter</router-link>
+    <router-link to="/jobs">Jobs</router-link>
   </nav>
   <router-view />
 </template>
@@ -15,6 +16,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #cacbcf;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 nav {
