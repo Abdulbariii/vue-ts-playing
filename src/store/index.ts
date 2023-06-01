@@ -11,6 +11,7 @@ interface RootState {
   count: number;
   limitData: number;
   products: any[];
+  product: any[];
   searchText: string;
 }
 
@@ -35,6 +36,10 @@ const mutations: MutationTree<RootState> = {
   fetchProducts(state, products) {
     state.products = products;
   },
+
+  fetchProduct(state, product) {
+    state.product = product;
+  },
 };
 
 // Define the actions
@@ -55,6 +60,15 @@ const actions: ActionTree<RootState, RootState> = {
 
     commit("fetchProducts", data);
   },
+
+  async getSingleProduct({ commit }, payload) {
+    const response = await fetch(
+      `https://fakestoreapi.com/products/${payload}`
+    );
+    const data = await response.json();
+
+    commit("fetchProduct", data);
+  },
 };
 
 // Create the store options
@@ -65,6 +79,7 @@ const storeOptions: StoreOptions<RootState> = {
     count: 1,
     limitData: 5,
     products: [],
+    product: [],
     searchText: "nothing",
   },
   mutations,

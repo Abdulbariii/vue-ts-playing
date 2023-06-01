@@ -17,6 +17,9 @@
       >
         <img :src="product.image" alt="" />
         <h4>{{ product.title }}</h4>
+        <button>
+          <router-link :to="`/counter/${product.id}`">View</router-link>
+        </button>
       </div>
     </transition-group>
   </section>

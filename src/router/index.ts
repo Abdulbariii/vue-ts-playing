@@ -4,6 +4,7 @@ import ContactPage from "../views/ContactPage.vue";
 import CounterPage from "../views/CounterPage.vue";
 import JobsPage from "../views/JobsPage.vue";
 import AboutViewVue from "../views/AboutView.vue";
+import ProductInfo from "../components/ProductInfo.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,6 +35,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/jobs",
     name: "jobs",
     component: JobsPage,
+  },
+  {
+    path: "/counter/:id",
+    name: "jobs",
+    component: ProductInfo,
   },
 ];
 
