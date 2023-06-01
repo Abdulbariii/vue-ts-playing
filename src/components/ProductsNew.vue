@@ -1,10 +1,24 @@
 <!-- eslint-disable prettier/prettier -->
 <template lang="">
   <section class="con">
-    <div v-for="(product, index) in $store.state.products" :key="index">
-      <img :src="product.image" alt="" />
-      <h4>{{ product.title }}</h4>
-    </div>
+    <transition-group
+      name="card"
+      tag="section"
+      v-for="(product, index) in $store.state.products"
+      :key="index"
+      mode="out-in"
+    >
+      <div
+        v-if="
+          $store.state.searchText == 'nothing'
+            ? true
+            : product.title.includes($store.state.searchText)
+        "
+      >
+        <img :src="product.image" alt="" />
+        <h4>{{ product.title }}</h4>
+      </div>
+    </transition-group>
   </section>
   <SeeMore @fetchMore="fetchMore"></SeeMore>
   <ShowLess @fetchLess="fetchLess" v-if="$store.state.limitData > 5"></ShowLess>
@@ -77,5 +91,19 @@ img {
   width: 100%;
   height: 60%;
   object-fit: cover;
+}
+
+.card-move {
+  transition: all 0.8s;
+}
+.card-enter-active,
+.fade-leave-active {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.card-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
 }
 </style>

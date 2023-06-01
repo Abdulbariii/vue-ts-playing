@@ -11,6 +11,7 @@ interface RootState {
   count: number;
   limitData: number;
   products: any[];
+  searchText: string;
 }
 
 // Define the mutations, if the state update in client there is no need to go to with actions, only mutations is needed
@@ -43,6 +44,8 @@ const actions: ActionTree<RootState, RootState> = {
       this.state.limitData = this.state.limitData + 5;
     } else if (payload == "fetchLess") {
       this.state.limitData = this.state.limitData - 5;
+    } else {
+      this.state.limitData = 0;
     }
     const response = await fetch(
       `https://fakestoreapi.com/products?limit=${this.state.limitData}
@@ -62,6 +65,7 @@ const storeOptions: StoreOptions<RootState> = {
     count: 1,
     limitData: 5,
     products: [],
+    searchText: "nothing",
   },
   mutations,
   actions,
