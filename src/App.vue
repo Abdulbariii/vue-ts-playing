@@ -2,6 +2,8 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
+    <router-link to="/contact">Contact</router-link>
+    <router-link to="/counter">Counter</router-link>
   </nav>
   <router-view />
 </template>
@@ -17,6 +19,8 @@
 
 nav {
   padding: 30px;
+  display: flex;
+  gap: 20px;
 
   a {
     font-weight: bold;
