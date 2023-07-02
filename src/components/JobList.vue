@@ -65,11 +65,6 @@ ul {
     color: black;
     flex-direction: column;
 
-    p {
-      font-weight: 700;
-      font-size: 30px;
-    }
-
     .salary {
       background-color: #68696b88;
       width: 100%;
